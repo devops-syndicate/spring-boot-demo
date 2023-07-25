@@ -20,7 +20,8 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
         cache: 'gradle'
-    - run: ./gradlew bootJar
+    - run: ./gradlew bootJar --no-daemon
+    - run: tree .
     - name: Define image tag
       id: vars
       shell: bash
