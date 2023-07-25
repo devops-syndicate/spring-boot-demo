@@ -7,4 +7,5 @@ resources:
 configMapGenerator:
   - name: demo-app
     literals:
+      - "PYROSCOPE_URL=http://pyroscope.pyroscope:4040"
       - "MANAGEMENT_OTLP_TRACING_ENDPOINT=http://tempo.tempo:4318/v1/traces"

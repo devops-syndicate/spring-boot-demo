@@ -18,8 +18,9 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'net.logstash.logback:logstash-logback-encoder:7.3'
 	implementation 'io.micrometer:micrometer-registry-prometheus'
+	implementation 'net.logstash.logback:logstash-logback-encoder:7.3'
+	implementation 'io.pyroscope:agent:0.11.5'
 	runtimeOnly 'io.micrometer:micrometer-tracing-bridge-otel'
 	runtimeOnly 'io.opentelemetry:opentelemetry-exporter-otlp'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
