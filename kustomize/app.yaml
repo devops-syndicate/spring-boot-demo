@@ -13,6 +13,11 @@ spec:
               configMapKeyRef:
                 name: demo-app
                 key: MANAGEMENT_OTLP_TRACING_ENDPOINT
+          - name: PYROSCOPE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: demo-app
+                key: PYROSCOPE_URL
         image: sselzer/demo-app
         port: 8080
       traits:
