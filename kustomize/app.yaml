@@ -1,0 +1,33 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: demo-app
+spec:
+  components:
+    - name: demo-app
+      type: webservice
+      properties:
+        env:
+          - name: MANAGEMENT_OTLP_TRACING_ENDPOINT
+            valueFrom:
+              configMapKeyRef:
+                name: demo-app
+                key: MANAGEMENT_OTLP_TRACING_ENDPOINT
+        image: sselzer/demo-app
+        port: 8080
+      traits:
+        - type: annotations
+          properties:
+            "prometheus.io/scrape": "true"
+            "prometheus.io/path": /actuator/prometheus
+            "prometheus.io/port": "8080"
+        - type: gateway
+          properties:
+            domain: demo-app.127.0.0.1.nip.io
+            http:
+              "/": 8080
+        - type: cpuscaler
+          properties:
+            min: 1
+            max: 3
+            cpuPercent: 80
