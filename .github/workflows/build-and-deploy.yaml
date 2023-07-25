@@ -21,7 +21,6 @@ jobs:
         java-version: '17'
         cache: 'gradle'
     - run: ./gradlew bootJar --no-daemon
-    - run: tree .
     - name: Define image tag
       id: vars
       shell: bash
@@ -35,6 +34,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
       with:
+        context: .
         push: true
         tags: ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.tag }}
   update_argo_apps:
